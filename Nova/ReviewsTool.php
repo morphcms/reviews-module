@@ -21,8 +21,9 @@ class ReviewsTool extends Tool
 
     public function menu(Request $request)
     {
-        return MenuSection::make('Reviews', [
-            MenuItem::resource(Review::class)->canSee(fn() => true),
-        ])->icon('annotation')->collapsable();
+//        return MenuSection::make('Reviews', [
+//            MenuItem::resource(Review::class)->canSee(fn() => $request->user()->can('reviews.viewAny')),
+//        ])->icon('annotation')->collapsable();
+        return null;
     }
 }

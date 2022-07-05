@@ -20,43 +20,38 @@ class ReviewPolicy
 
     }
 
-    public function before(User $user): ?bool
-    {
-        if($user->hasRole('super-admin')) {
-            return true;
-        }
-        else {
-            return null;
-        }
-    }
-
     public function view(User $user, Review $review): bool
     {
-        return $user->hasAnyRole(['user']);
+        return $user->can('reviews.view');
+    }
+
+    public function viewAny(User $user): bool
+    {
+        return $user->can('reviews.viewAny');
     }
 
     public function replicate(User $user, Review $review): bool
     {
-        return $user->hasAnyRole(['admin']);
+        return $user->can('reviews.replicate');
     }
 
     public function edit(User $user, Review $review): bool
     {
-        return $user->hasAnyRole(['admin']);
+        return $user->can('reviews.edit');
     }
 
     public function create(User $user): bool
     {
-        return $user->hasAnyRole(['user']);
+        return $user->can('reviews.create');
     }
 
     public function update(User $user, Review $review): bool
     {
-        return $user->hasAnyRole(['admin']);
+        return $user->can('reviews.update');
     }
 
     public function delete(User $user, Review $review): bool
     {
-        return $user->hasAnyRole(['admin']);
+        return $user->can('reviews.delete');
     }
 }
