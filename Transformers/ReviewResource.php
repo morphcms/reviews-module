@@ -2,8 +2,8 @@
 
 namespace Modules\Reviews\Transformers;
 
-use App\Http\Resources\UserProfileResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\CHB\Transformers\UserProfileResource;
 
 class ReviewResource extends JsonResource
 {
@@ -13,7 +13,7 @@ class ReviewResource extends JsonResource
      * @param  \Illuminate\Http\Request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'rating' => $this->rating,

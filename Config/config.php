@@ -2,5 +2,5 @@
 
 return [
     'name' => 'Reviews',
-    'table_prefix' => 'reviews_'
+    'table_prefix' => 'reviews_',
 ];

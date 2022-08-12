@@ -17,7 +17,6 @@ class ReviewPolicy
      */
     public function __construct()
     {
-
     }
 
     public function view(User $user, Review $review): bool

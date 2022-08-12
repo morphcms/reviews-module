@@ -2,9 +2,8 @@
 
 namespace Modules\Reviews\Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Arabic;
+use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -33,12 +32,12 @@ class ReviewsDatabaseSeeder extends Seeder
 
         $admin = Role::findByName('admin');
 
-        foreach ($this->permissions as $permission){
+        foreach ($this->permissions as $permission) {
             Permission::create([
-                'name' => $this->resource . '.' . $permission,
+                'name' => $this->resource.'.'.$permission,
             ]);
         }
 
-        $admin->givePermissionTo($this->resource . '.*');
+        $admin->givePermissionTo($this->resource.'.*');
     }
 }
