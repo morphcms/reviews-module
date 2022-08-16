@@ -7,6 +7,7 @@ use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Tool;
 use Modules\Reviews\Nova\Resources\Review;
+use Nova;
 
 class ReviewsTool extends Tool
 {
@@ -16,14 +17,13 @@ class ReviewsTool extends Tool
 
     public function boot()
     {
-        \Nova::resources(static::$resources);
+        Nova::resources(static::$resources);
     }
 
     public function menu(Request $request)
     {
-//        return MenuSection::make('Reviews', [
-//            MenuItem::resource(Review::class)->canSee(fn() => $request->user()->can('reviews.viewAny')),
-//        ])->icon('annotation')->collapsable();
-        return null;
+        return MenuSection::make('Reviews', [
+            MenuItem::resource(Review::class)->canSee(fn() => $request->user()->can('reviews.viewAny')),
+        ])->icon('annotation')->collapsable();
     }
 }
